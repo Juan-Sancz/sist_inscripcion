@@ -1,0 +1,110 @@
+<html>
+
+
+<head>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+
+    
+
+</head>
+
+
+<body>
+
+    
+    <div id="reader" width="600px"></div>
+
+    <script>
+        function include(html5QrcodeScanner){
+            
+            return HtmlService.createHtmlOutputFromFile(html5QrcodeScanner).getContent();
+            
+        }
+
+        function onScanSuccess(decodedText, decodedResult) {
+        // handle the scanned code as you like, for example:
+        var datos=`${decodedText}`, decodedResult;
+        console.log(datos); 
+        array=datos.split('@');
+        $(document.getElementById('tramite')).val(array[0]);
+        $(document.getElementById('apellido')).val(array[1]);
+        $(document.getElementById('nombre')).val(array[2]);
+        $(document.getElementById('sexo')).val(array[3]);
+        $(document.getElementById('dni')).val(array[4]);
+        $(document.getElementById('ejemplar')).val(array[5]);
+        $(document.getElementById('f-n')).val(array[6]);
+        $(document.getElementById('f-e')).val(array[7]);
+        $(document.getElementById('cuil')).val(array[8]);
+        
+
+        }
+
+        function onScanFailure(error) {
+        // handle scan failure, usually better to ignore and keep scanning.
+        // for example:
+        console.warn(`Code scan error = ${error}`);
+        }
+
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader",
+        { fps: 10, qrbox: {width: 280, height: 100} },
+        /* verbose= */ false);
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+    
+    </script>
+<head>
+    <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    input {
+      margin-top: 5px;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <form>
+        <label for="tramite">Tramite:</label>
+        <input type="text" id="tramite" name="tramite">
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido">
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre">
+      
+      <label for="sexo">Sexo:</label>
+        <input type="text" id="sexo" name="sexo">
+
+        <label for="dni">DNI:</label>
+      <input type="text" id="dni" name="dni">
+
+        <label for="ejemplar">Ejemplar:</label>
+        <input type="text" id="ejemplar" name="ejemplar">
+      
+      <label for="f-n">Fecha de nacimiento:</label>
+      <input type="text" id="f-n" name="f-n">
+
+      <label for="f-e">Fecha de emision:</label>
+      <input type="text" id="f-e" name="f-e">
+
+      <label for="cuil">Cuil:</label>
+      <input type="text" id="cuil" name="cuil">
+      
+      <input type="submit" value="Submit">
+    </form> 
+    
+</body>
+
+</html>
