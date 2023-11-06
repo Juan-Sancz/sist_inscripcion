@@ -67,7 +67,7 @@
                                     <?php echo $row["telefono"] ?>
                                 </div>
                                 </p>
-                                <form method="POST" action="escuelas.php">
+                                <form method="POST" action="php/escuelas.php">
                                     <input type="hidden" id="id" name="id" value="<?php echo $row["id"] ?>">
                                     <button type="submit" class="btn btn-primary">Inscribir</button>
                                 </form>
