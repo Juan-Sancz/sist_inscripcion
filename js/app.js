@@ -153,7 +153,7 @@ if (guardar){
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Your work has been saved',
+                        title: 'Registrado con exito',
                         showConfirmButton: false,
                         timer: 1500
                       })
